@@ -29,6 +29,7 @@ ul {
 
     display: grid;
     place-content: center;
+    background: #000;
   }
   
   ul {
