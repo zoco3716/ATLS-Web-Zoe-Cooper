@@ -105,3 +105,41 @@ nav a:hover {
   border-radius: 5px;
 }
 
+.project-item h3 {
+  margin-top: 10px;
+  font-size: 1.3em;
+  color: #002d40;
+}
+
+.project-item p {
+  font-size: 1.1em;
+  color: #4f4f4f;
+  margin-top: 10px;
+}
+
+/* Footer styles */
+footer {
+  text-align: center;
+  background-color: #002d40;
+  color: #f8efdc;
+  padding: 10px 0;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
+
+/* Responsive Design: Adjust grid for smaller screens */
+@media (max-width: 768px) {
+  .projects-grid {
+    grid-template-columns: 1fr; /* Stack projects on smaller screens */
+  }
+
+  nav {
+    display: block;
+    text-align: left;
+  }
+
+  .dropdown-content {
+    min-width: 200px; /* Ensure dropdown is wider on smaller screens */
+  }
+}
