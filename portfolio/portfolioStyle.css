@@ -1,10 +1,10 @@
-/* Global styles */
 body {
   font-family: 'Futura', sans-serif;
   background-color: #f8efdc;
   color: #4f4f4f;
   line-height: 1.6;
   text-decoration: none;
+  padding-bottom: 50px;
 }
 
 header {
@@ -117,12 +117,18 @@ nav a:hover {
   margin-top: 10px;
 }
 
+.p {
+  background-color: #f8efdc;
+  border-radius: 15px;
+  padding: 10px;
+}
+
 /* Footer styles */
 footer {
   text-align: center;
   background-color: #002d40;
   color: #f8efdc;
-  padding: 10px 0;
+  padding: 1px;
   position: fixed;
   width: 100%;
   bottom: 0;

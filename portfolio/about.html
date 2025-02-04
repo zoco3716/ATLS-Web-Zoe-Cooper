@@ -5,82 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About Me</title>
   <link href="https://fonts.googleapis.com/css2?family=Futura:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="portfolioStyle.css">
   <style>
     body {
-      font-family: 'Futura', sans-serif;
-      background-color: #f8efdc; /* Vintage Linen Color */
-      color: #4f4f4f; /* Soft dark gray for text */
-      line-height: 1.6;
+      background-image: url('https://the-public-domain-review.imgix.net/essays/anna-atkins-cyanotypes/anna-atkins-double-unravel.jpeg?fit=max&w=1200&h=850&auto=format,compress');
     }
-
-    header {
-      background-color: #002d40;
-      color: #f8efdc;
-      padding: 20px 0;
-      text-align: center;
-    }
-
-    nav {
-      text-align: center;
-      background-color: #004d66;
-      padding: 10px;
-    }
-
-    nav a {
-      color: #f8efdc;
-      margin: 0 20px;
-      text-decoration: none;
-      font-weight: bold;
-      text-transform: uppercase;
-    }
-
-    nav a:hover {
-      color: #973955;
-      text-decoration: underline;
-    }
-
-    .container {
-      padding: 40px 10%;
-    }
-
-    footer {
-      text-align: center;
-      background-color: #002d40;
-      color: #f8efdc;
-      padding: 10px 0;
-      position: fixed;
-      width: 100%;
-      bottom: 0;
-    }
-
-    .about-me-container {
-      display: flex;
-      align-items: center;
-      margin-top: 40px;
-      max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
-      gap: 40px; /* Add space between image and text */
-    }
-
-    .about-me-container img {
-      width: 200px;
-      height: auto;
-      border-radius: 50%; /* Make the image circular */
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    .about-me-container .text {
-      max-width: 600px;
-    }
-
-    .about-me-container .text p {
-      font-size: 1.1em;
-      margin-top: 20px;
-      color: #4f4f4f;
-    }
-
-  </style>
+    </style>
 </head>
 <body>
 
@@ -91,17 +21,29 @@
   <nav>
     <a href="index.html">Home</a>
     <a href="about.html">About Me</a>
+    
+    <!-- Projects Dropdown -->
+    <div class="dropdown">
+      <a href="#" class="dropdown-btn">Projects</a>
+      <div class="dropdown-content">
+        <a href="project1.html">Project 1</a>
+        <a href="project2.html">Project 2</a>
+        <a href="project3.html">Project 3</a>
+        <a href="project4.html">Project 4</a>
+        <a href="project5.html">Project 5</a>
+        <a href="project6.html">Project 6</a>
+      </div>
+    </div>
+    
     <a href="contact.html">Contact</a>
   </nav>
 
   <div class="container">
     <div class="about-me-container">
-      <!-- Image on the left -->
-      <img src="zoe-image.jpg" alt="Zoe Cooper">
-      <!-- Text on the right -->
+      <img align = "left"; src="https://media.istockphoto.com/id/1446465512/vector/avatar-portrait-of-a-young-caucasian-girl-woman-in-round-frame.jpg?s=612x612&w=0&k=20&c=qomX6YxYq9bQNoevWfNF_ddlngbTS3YnHwLiyd7cMOo=" alt="Zoe Cooper">
       <div class="text">
-        <h2>Hi, I'm Zoe Cooper</h2>
-        <p>I’m Zoe Cooper, a sophomore at CU Boulder majoring in Creative Technology & Design—an engineering degree with a focus on design and human interaction—and minoring in Engineering Entrepreneurship. I’m enthusiastic about creating all kinds of art, especially writing music and crafting. I firmly believe that art is whatever you make it and that it holds a meaningful place in the world. Through my work, I strive to highlight the complexity and wonder of the world, encouraging others to engage with it through creativity and shared knowledge.</p>
+        <h2 align = "right"; class="p">Hi, I'm Zoe Cooper</h2>
+        <p align = "right"; class="p">I’m Zoe Cooper, a sophomore at CU Boulder majoring in Creative Technology & Design—an engineering degree with a focus on design and human interaction—and minoring in Engineering Entrepreneurship. I’m enthusiastic about creating all kinds of art, especially writing music and crafting. I firmly believe that art is whatever you make it and that it holds a meaningful place in the world. Through my work, I strive to highlight the complexity and wonder of the world, encouraging others to engage with it through creativity and shared knowledge.</p>
       </div>
     </div>
   </div>

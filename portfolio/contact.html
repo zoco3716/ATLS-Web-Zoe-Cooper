@@ -5,50 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact - Zoe Cooper</title>
   <link href="https://fonts.googleapis.com/css2?family=Futura:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="portfolioStyle.css">
   <style>
     body {
       font-family: 'Futura', sans-serif;
       background-color: #f8efdc;
       color: #4f4f4f;
       line-height: 1.6;
-      margin: 0;
-      padding: 0;
-    }
-
-    header {
-      background-color: #002d40;
-      color: #f8f5ee;
-      padding: 20px 0;
-      text-align: center;
-    }
-
-    nav {
-      text-align: center;
-      background-color: #004d66;
-      padding: 10px;
-    }
-
-    nav a {
-      color: #f8f5ee;
-      margin: 0 20px;
-      text-decoration: none;
-      font-weight: bold;
-      text-transform: uppercase;
-    }
-
-    nav a:hover {
-      color: #973955;
-      text-decoration: underline;
-    }
-
-    .container {
-      padding: 40px 10%;
-    }
-
-    h2 {
-      color: #973955; /* Replacing yellow with your specified color */
-      text-align: center;
-      font-size: 2em;
+      background-image: url('https://i.etsystatic.com/10784900/r/il/71a165/3317023950/il_570xN.3317023950_dhtj.jpg');
     }
 
     .contact-form {
@@ -92,16 +56,6 @@
       background-color: #973955;
     }
 
-    footer {
-      text-align: center;
-      background-color: #002d40;
-      color: #fff;
-      padding: 10px 0;
-      position: fixed;
-      width: 100%;
-      bottom: 0;
-    }
-
   </style>
 </head>
 <body>
@@ -113,11 +67,25 @@
   <nav>
     <a href="index.html">Home</a>
     <a href="about.html">About Me</a>
+    
+    <!-- Projects Dropdown -->
+    <div class="dropdown">
+      <a href="#" class="dropdown-btn">Projects</a>
+      <div class="dropdown-content">
+        <a href="project1.html">Project 1</a>
+        <a href="project2.html">Project 2</a>
+        <a href="project3.html">Project 3</a>
+        <a href="project4.html">Project 4</a>
+        <a href="project5.html">Project 5</a>
+        <a href="project6.html">Project 6</a>
+      </div>
+    </div>
+    
     <a href="contact.html">Contact</a>
   </nav>
 
   <div class="container">
-    <h2>Get in Touch</h2>
+    <h2 style="color:#f8efdc;">Get in Touch</h2>
 
     <div class="contact-form">
         <form
