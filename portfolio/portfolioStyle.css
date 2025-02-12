@@ -146,45 +146,4 @@ nav a:hover {
 
 .p {
   background-color: #f8efdc;
-  border-radius: 15px;
-  padding: 10px;
-}
-/* Footer styles */
-footer {
-  text-align: center;
-  background-color: #002d40;
-  color: #f8efdc;
-  padding: 1px;
-  position: fixed;
-  width: 100%;
-  bottom: 0;
-}
-
-nav a, .dropdown-btn, .project-item {
-  transition: color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
-}
-
-*, *::before, *::after {
-  box-sizing: border-box;
-}
-
-a:focus, .dropdown-btn:focus, .project-item:focus {
-  outline: 3px solid #973955;
-  outline-offset: 2px;
-}
-
-/* Responsive Design: Adjust grid for smaller screens */
-@media (max-width: 768px) {
-  .projects-grid {
-    grid-template-columns: 1fr;
-  }
-
-  nav {
-    display: block;
-    text-align: left;
-  }
-
-  .dropdown-content {
-    min-width: 200px;
-  }
-}
+  border-radius: 
