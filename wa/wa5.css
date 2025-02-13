@@ -1,0 +1,46 @@
+.background {
+    background-image: url('../img/calvinKlein.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    z-index: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vw;
+}
+
+.subText {
+    z-index: 2;
+    font-size: 1.5rem;
+    background-color: white;
+    color: rgb(0, 0, 0);
+    padding: .25em;
+    font-family: "Lucida Console", "Courier New", monospace;
+    position: absolute;
+    bottom: 0em;
+    width: 80vw;
+    left: 50%;
+    text-align: right;
+    transform: translateX(-40%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2em;
+    font-weight: normal;
+}
+
+p {
+    z-index: 1;
+    font-size: rem;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    padding: .5em;
+    font-family: "Lucida Console", "Courier New", monospace;
+    position: absolute;
+    top: 2em;
+    bottom: 16em;
+    width: 80vw;
+}
+
