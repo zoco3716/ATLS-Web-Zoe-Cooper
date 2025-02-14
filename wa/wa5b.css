@@ -33,4 +33,41 @@ body {
     align-items: center;
     font-size: 8vw;
     z-index: 1;
-    font-family: "Lucida Console", "Couri
+    font-family: "Lucida Console", "Courier New", monospace;
+    font-weight: bold;
+    padding: 1.25em;
+}
+
+.include {
+    position: absolute;
+    width: 45vw;
+    height: 1vw;
+    background-color: rgba(255, 255, 255, 0.542);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2vw;
+    z-index: 1;
+    font-family: "Lucida Console", "Courier New", monospace;
+    padding: 1em;
+    font-style: italic;
+}
+
+.call {
+    position: absolute;
+    width: 80vw;
+    height: 10vw;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 4vw;
+    z-index: 1;
+    font-family: "Lucida Console", "Courier New", monospace;
+    padding: .5em;
+}
+
+.calvinKlein { top: .5em; left: .5em; }
+.price { top: .1em; right: .1em; }
+.call { bottom: 1em; left: 1em; }
+.include { bottom: 1em; right: 1em; }
