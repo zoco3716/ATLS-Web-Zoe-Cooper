@@ -183,4 +183,18 @@ video {
 }
 
 
-/* Responsive Design:
+/* Responsive Design: Adjust grid for smaller screens */
+@media (max-width: 768px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  nav {
+    display: block;
+    text-align: left;
+  }
+
+  .dropdown-content {
+    min-width: 200px;
+  }
+}
