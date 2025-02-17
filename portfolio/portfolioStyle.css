@@ -3,7 +3,7 @@ html {
 }
 
 body {
-  font-family: 'Futura', sans-serif;
+  font-family: "Gill Sans", sans-serif;
   background-color: #f8efdc;
   color: #4f4f4f;
   line-height: 1.6;
@@ -16,6 +16,7 @@ header {
   color: #f8efdc;
   padding: 20px 0;
   text-align: center;
+  font-family: "Lucida Console", monospace;
 }
 
 nav {
@@ -23,6 +24,7 @@ nav {
   background-color: #004d66;
   padding: 10px;
   position: relative;
+  font-family: "Lucida Console", monospace;
 }
 
 nav a {
@@ -31,6 +33,7 @@ nav a {
   text-decoration: none;
   font-weight: bold;
   text-transform: uppercase;
+  font-family: "Lucida Console", monospace;
 }
 
 nav a.active {
@@ -56,6 +59,7 @@ nav a:hover {
   text-transform: uppercase;
   padding: 10px 20px;
   cursor: pointer;
+  font-family: "Lucida Console", monospace;
 }
 
 .dropdown:hover > .dropdown-content {
@@ -66,7 +70,7 @@ nav a:hover {
   display: none;
   position: absolute;
   background-color: #f8f5ee;
-  min-width: 200px;
+  min-width: 210px;
   text-align: left;
   box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
   z-index: 1;
@@ -172,6 +176,12 @@ a:focus, .dropdown-btn:focus, .project-item:focus {
   outline: 3px solid #973955;
   outline-offset: 2px;
 }
+
+video {
+  display: block;
+  margin: auto;
+}
+
 
 /* Responsive Design: Adjust grid for smaller screens */
 @media (max-width: 768px) {
