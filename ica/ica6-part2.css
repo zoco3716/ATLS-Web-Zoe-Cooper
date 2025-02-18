@@ -27,4 +27,34 @@ body{
 #grid-parent{
     display: inline-grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1f
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    align-content: center;
+}
+
+#grid-parent h1{
+    background-color: grey;
+    padding:3vw 5vh;
+    margin:5vw;
+}
+#no0{
+    grid-column-start: 2;
+    grid-column-end: 3;
+}
+#no1{
+}
+#no2{
+}
+#no3{
+}
+#no4{
+}
+#no5{
+}
+#no6{
+}
+#no7{
+}
+#no8{
+}
+#no9{
+}
