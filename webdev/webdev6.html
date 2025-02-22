@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Particle Behaviors</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background-color: #222;
+    }
+    canvas {
+      display: block;
+    }
+    /* Dark mode panel in top left */
+    #colorPanel {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      background: rgba(0, 0, 0, 0.8);
+      color: rgb(255, 255, 255);
+      padding: 10px;
+      border-radius: 1px;
+      z-index: 10;
+      font-family: serif;
+      font-size: 20px;
+    }
+    #colorPanel label {
+      margin-right: 5px;
+    }
+    #colorPanel div {
+      margin-bottom: 5px;
+    }
+  </style>
+  <!-- Three.js library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <!-- OrbitControls -->
+  <script src="https://unpkg.com/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+</head>
+<body>
+  <!-- Dark Mode Panel -->
+  <div id="colorPanel">
+    <div>
+      <label for="dotColorPicker">Color:</label>
+      <!-- Default color changed to bright blue (#009EFF) -->
+      <input type="color" id="dotColorPicker" value="#009EFF">
+    </div>
+    <div>
+      <label for="toggleGridCheckbox">Show Grid:</label>
+      <input type="checkbox" id="toggleGridCheckbox" checked>
+    </div>
+  </div>
+
+  <script>
+    // Global dot color set to bright blue (#009EFF) by default
+    let currentDotColor = "#009EFF";
+
+    // ----- Custom Trail Material for Glowing & Fading Trails -----
+    function createTrailMaterial(baseColor) {
+      return new THREE.ShaderMaterial({
+        uniforms: {
+          color: { value: new THREE.Color(baseColor) },
+        },
+        vertexShader: `
+          attribute float alpha;
+          varying float vAlpha;
+          void main() {
+            vAlpha = alpha;
+            gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+          }
+        `,
+        fragmentShader: `
+          uniform vec3 color;
+          varying float vAlpha;
+          void main() {
+            gl_FragColor = vec4(color, vAlpha);
+          }
+        `,
+        transparent: true,
+        blending: THREE.AdditiveBlending,
+        depthWrite: false
+      });
+    }
+
+    // ----- Scene, Camera, Renderer -----
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(
+      75, window.innerWidth / window.innerHeight, 0.1, 3000
+    );
+    camera.position.set(800, 800, 800);
+    camera.lookAt(0, 0, 0);
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
+
+    const controls = new THREE.OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.05;
+
+    // ----- Lighting -----
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+    scene.add(ambientLight);
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+    directionalLight.position.set(500, 500, 500);
+    scene.add(directionalLight);
+
+    // ----- Global Constants -----
+    // Adjust these as you wish for the grid and boundary
+    const boundary = 750;
+
+    // ----- Cube Faces (Grid) -----
+    function createCubeFaces(size, color) {
+      const half = size / 2;
+      const segments = 20;
+      const material = new THREE.MeshBasicMaterial({
+        color: color,
+        opacity: 0.03,
+        transparent: true,
+        side: THREE.FrontSide,
+        wireframe: true
+      });
+      const faces = new THREE.Group();
+
+      const frontMesh = new THREE.Mesh(new THREE.PlaneGeometry(size, size, segments, segments), material);
+      frontMesh.position.set(0, 0, half);
+      faces.add(frontMesh);
+
+      const backMesh = new THREE.Mesh(new THREE.PlaneGeometry(size, size, segments, segments), material);
+      backMesh.position.set(0, 0, -half);
+      backMesh.rotation.y = Math.PI;
+      faces.add(backMesh);
+
+      const rightMesh = new THREE.Mesh(new THREE.PlaneGeometry(size, size, segments, segments), material);
+      rightMesh.position.set(half, 0, 0);
+      rightMesh.rotation.y = -Math.PI / 2;
+      faces.add(rightMesh);
+
+      const leftMesh = new THREE.Mesh(new THREE.PlaneGeometry(size, size, segments, segments), material);
+      leftMesh.position.set(-half, 0, 0);
+      leftMesh.rotation.y = Math.PI / 2;
+      faces.add(leftMesh);
+
+      const topMesh = new THREE.Mesh(new THREE.PlaneGeometry(size, size, segments, segments), material);
+      topMesh.position.set(0, half, 0);
+      topMesh.rotation.x = -Math.PI / 2;
+      faces.add(topMesh);
+
+      const bottomMesh = new THREE.Mesh(new THREE.PlaneGeometry(size, size, segments, segments), material);
+      bottomMesh.position.set(0, -half, 0);
+      bottomMesh.rotation.x = Math.PI / 2;
+      faces.add(bottomMesh);
+
+      return faces;
+    }
+    const cubeFaces = createCubeFaces(1500, 0x555555);
+    scene.add(cubeFaces);
+
+    // ----- Explosion Effect -----
+    const explosions = [];
+    function spawnExplosion(pos, explosionColor = 0xffaa00) {
+      const geo = new THREE.SphereGeometry(10, 16, 16);
+      const mat = new THREE.MeshBasicMaterial({
+        color: explosionColor,
+        transparent: true,
+        opacity: 1,
+        blending: THREE.AdditiveBlending,
+        depthWrite: false
+      });
+      const exp = new THREE.Mesh(geo, mat);
+      exp.position.copy(pos);
+      exp.scale.set(0.1, 0.1, 0.1);
+      scene.add(exp);
+      explosions.push({ mesh: exp, life: 1.0 });
+    }
+
+    // ----- Green Dots (with Trails) -----
+    const greenDots = [];
+    const numGreenDots = 200;
+    const greenDotGeo = new THREE.SphereGeometry(3, 8, 8);
+    // Use currentDotColor for the dot material (default #009EFF).
+    const greenDotMat = new THREE.MeshLambertMaterial({ color: new THREE.Color(currentDotColor) });
+
+    for (let i = 0; i < numGreenDots; i++) {
+      const mesh = new THREE.Mesh(greenDotGeo, greenDotMat);
+      mesh.position.set(
+        Math.random() * boundary * 2 - boundary,
+        Math.random() * boundary * 2 - boundary,
+        Math.random() * boundary * 2 - boundary
+      );
+      scene.add(mesh);
+      greenDots.push({
+        mesh: mesh,
+        velocity: new THREE.Vector3(
+          (Math.random() - 0.5) * 2,
+          (Math.random() - 0.5) * 2,
+          (Math.random() - 0.5) * 2
+        ),
+        trail: [],
+        forcedCollisionCooldown: 0,
+        // Cluster behavior properties:
+        isSwarming: false,    // whether in swarm mode
+        swarmTimer: 0,        // 5-second swarm phase timer
+        clusterSize: 1,
+        clusterCenter: new THREE.Vector3(),
+        // Group immunity prevents re-grouping for 5 seconds after explosion
+        groupImmunityTimer: 0
+      });
+    }
+
+    function updateGreenTrailLine(dot) {
+      const pts = dot.trail.slice();
+      const posArr = [];
+      const alphas = [];
+      const n = pts.length;
+      for (let i = 0; i < n; i++) {
+        posArr.push(pts[i].x, pts[i].y, pts[i].z);
+        alphas.push(n > 1 ? i / (n - 1) : 1.0);
+      }
+      if (dot.trailLine) {
+        dot.trailLine.geometry.setAttribute('position', new THREE.Float32BufferAttribute(posArr, 3));
+        dot.trailLine.geometry.setAttribute('alpha', new THREE.Float32BufferAttribute(alphas, 1));
+        dot.trailLine.geometry.attributes.position.needsUpdate = true;
+        dot.trailLine.geometry.attributes.alpha.needsUpdate = true;
+      } else {
+        const geo = new THREE.BufferGeometry();
+        geo.setAttribute('position', new THREE.Float32BufferAttribute(posArr, 3));
+        geo.setAttribute('alpha', new THREE.Float32BufferAttribute(alphas, 1));
+        dot.trailLine = new THREE.Line(geo, createTrailMaterial(currentDotColor));
+        scene.add(dot.trailLine);
+      }
+    }
+
+    // ----- Clustering Function -----
+    // Groups green dots (only those not immune) that are within 50 units.
+    function computeClusters() {
+      const clusters = [];
+      const visited = new Set();
+      for (let i = 0; i < greenDots.length; i++) {
+        // Skip dots in group immunity
+        if (visited.has(i) || greenDots[i].groupImmunityTimer > 0) continue;
+        const cluster = [];
+        const stack = [i];
+        while (stack.length > 0) {
+          const j = stack.pop();
+          if (!visited.has(j)) {
+            if (greenDots[j].groupImmunityTimer > 0) continue;
+            visited.add(j);
+            cluster.push(j);
+            for (let k = 0; k < greenDots.length; k++) {
+              if (!visited.has(k) && greenDots[k].groupImmunityTimer <= 0) {
+                const d = greenDots[j].mesh.position.distanceTo(greenDots[k].mesh.position);
+                if (d < 50) {
+                  stack.push(k);
+                }
+              }
+            }
+          }
+        }
+        clusters.push(cluster);
+      }
+      return clusters;
+    }
+
+    // ----- Reset Helper for Green Dots -----
+    function resetGreenDot(dot) {
+      dot.mesh.position.set(
+        Math.random() * boundary * 2 - boundary,
+        Math.random() * boundary * 2 - boundary,
+        Math.random() * boundary * 2 - boundary
+      );
+      dot.velocity.set(
+        (Math.random() - 0.5) * 2,
+        (Math.random() - 0.5) * 2,
+        (Math.random() - 0.5) * 2
+      );
+      dot.trail = [];
+      if (dot.trailLine) {
+        scene.remove(dot.trailLine);
+        dot.trailLine = null;
+      }
+      dot.isSwarming = false;
+      dot.swarmTimer = 0;
+      dot.clusterSize = 1;
+      dot.groupImmunityTimer = 0;
+    }
+
+    // ----- Clock -----
+    const clock = new THREE.Clock();
+
+    // ----- Animation Loop -----
+    function animate() {
+      requestAnimationFrame(animate);
+      const delta = clock.getDelta();
+      const maxSpeed = 5;
+
+      // --- Cluster the green dots (skip those in immunity) ---
+      const clusters = computeClusters();
+      clusters.forEach(cluster => {
+        // Compute cluster center.
+        const center = new THREE.Vector3();
+        cluster.forEach(i => {
+          center.add(greenDots[i].mesh.position);
+        });
+        center.divideScalar(cluster.length);
+        // Assign cluster data to each dot.
+        cluster.forEach(i => {
+          greenDots[i].clusterSize = cluster.length;
+          greenDots[i].clusterCenter = center.clone();
+        });
+        // If the cluster has reached 20 dots, start swarm mode for all dots in it.
+        if (cluster.length >= 20) {
+          cluster.forEach(i => {
+            if (!greenDots[i].isSwarming) {
+              greenDots[i].isSwarming = true;
+              greenDots[i].swarmTimer = 5; // 5-second swarm phase
+            }
+          });
+        }
+      });
+
+      // --- Update Green Dots ---
+      greenDots.forEach(dot => {
+        const pos = dot.mesh.position;
+
+        // Update group immunity timer if active.
+        if (dot.groupImmunityTimer > 0) {
+          dot.groupImmunityTimer -= delta;
+          if (dot.groupImmunityTimer < 0) dot.groupImmunityTimer = 0;
+        }
+
+        // Swarm mode behavior modifications:
+        if (dot.isSwarming) {
+          if (dot.swarmTimer > 0) {
+            // Instead of converging tightly, orbit around the cluster center.
+            const offset = pos.clone().sub(dot.clusterCenter);
+            let tangential = new THREE.Vector3().crossVectors(offset, new THREE.Vector3(0, 1, 0));
+            if (tangential.length() < 0.001) {
+              tangential = new THREE.Vector3().crossVectors(offset, new THREE.Vector3(1, 0, 0));
+            }
+            tangential.normalize();
+            const orbitSpeed = 15; // Faster orbiting speed.
+            const swarmForce = tangential.multiplyScalar(orbitSpeed);
+            dot.velocity.lerp(swarmForce, 0.2);
+            dot.swarmTimer -= delta;
+          } else {
+            // When swarm phase ends, burst outward and trigger explosion.
+            const offset = pos.clone().sub(dot.clusterCenter);
+            const outDir = offset.normalize();
+            dot.velocity.copy(outDir.multiplyScalar(40));
+            spawnExplosion(dot.mesh.position, 0xffaa00);
+            dot.isSwarming = false;
+            // Apply 5-second group immunity to prevent immediate regrouping.
+            dot.groupImmunityTimer = 5;
+          }
+        } else {
+          // Normal behavior:
+          // If in group immunity, skip attraction/repulsion (apply just a slight random drift).
+          if (dot.groupImmunityTimer > 0) {
+            dot.velocity.add(new THREE.Vector3(
+              (Math.random() - 0.5) * 0.05,
+              (Math.random() - 0.5) * 0.05,
+              (Math.random() - 0.5) * 0.05
+            ));
+          } else {
+            // Compute attraction and repulsion forces.
+            const attractionRange = 50 + (dot.clusterSize - 1) * 10;
+            let acc = new THREE.Vector3(
+              (Math.random() - 0.5) * 0.2,
+              (Math.random() - 0.5) * 0.2,
+              (Math.random() - 0.5) * 0.2
+            );
+            let nCount = 0;
+            let center = new THREE.Vector3();
+            greenDots.forEach(other => {
+              if (other === dot) return;
+              if (other.groupImmunityTimer > 0) return; // Skip immune dots.
+              const d = pos.distanceTo(other.mesh.position);
+              if (d < attractionRange) {
+                center.add(other.mesh.position);
+                nCount++;
+              }
+            });
+            if (nCount > 0) {
+              center.divideScalar(nCount);
+              let pullStrength = 0.015;
+              acc.add(center.clone().sub(pos).multiplyScalar(pullStrength));
+              let orbitStrength = (dot.clusterSize >= 10 && dot.clusterSize < 20) ? 0.1 : 0.05;
+              let orbit = new THREE.Vector3().crossVectors(center.clone().sub(pos), new THREE.Vector3(0, 1, 0));
+              if (orbit.length() < 0.001)
+                orbit = new THREE.Vector3().crossVectors(center.clone().sub(pos), new THREE.Vector3(1, 0, 0));
+              orbit.normalize().multiplyScalar(orbitStrength);
+              acc.add(orbit);
+            }
+            // Repulsion force for very close dots.
+            greenDots.forEach(other => {
+              if (other === dot) return;
+              if (other.groupImmunityTimer > 0) return;
+              const d = pos.distanceTo(other.mesh.position);
+              if (d < 20 && d > 0)
+                acc.add(pos.clone().sub(other.mesh.position).normalize().divideScalar(d));
+            });
+            dot.velocity.add(acc);
+            if (dot.velocity.length() > maxSpeed)
+              dot.velocity.setLength(maxSpeed);
+          }
+        }
+
+        pos.add(dot.velocity);
+
+        // ----- Boundary Check -----
+        if (pos.x > boundary) { pos.x = boundary; dot.velocity.x *= -1; }
+        if (pos.x < -boundary) { pos.x = -boundary; dot.velocity.x *= -1; }
+        if (pos.y > boundary) { pos.y = boundary; dot.velocity.y *= -1; }
+        if (pos.y < -boundary) { pos.y = -boundary; dot.velocity.y *= -1; }
+        if (pos.z > boundary) { pos.z = boundary; dot.velocity.z *= -1; }
+        if (pos.z < -boundary) { pos.z = -boundary; dot.velocity.z *= -1; }
+
+        dot.trail.push(pos.clone());
+        if (dot.trail.length > 30)
+          dot.trail.shift();
+        updateGreenTrailLine(dot);
+      });
+
+      // --- Update Explosions ---
+      for (let i = explosions.length - 1; i >= 0; i--) {
+        const exp = explosions[i];
+        exp.life -= delta;
+        if (exp.life <= 0) {
+          scene.remove(exp.mesh);
+          explosions.splice(i, 1);
+        } else {
+          exp.mesh.scale.multiplyScalar(1 + delta * 2);
+          exp.mesh.material.opacity = exp.life;
+        }
+      }
+
+      controls.update();
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    // ----- Window Resize & Zoom Handling -----
+    window.addEventListener("resize", () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+    window.addEventListener("wheel", (e) => {
+      e.preventDefault();
+      camera.position.z += e.deltaY * 0.5;
+      camera.position.z = THREE.MathUtils.clamp(camera.position.z, 400, 3000);
+    });
+
+    // ----- Update Dot Color from the Color Picker -----
+    const colorPicker = document.getElementById("dotColorPicker");
+    colorPicker.addEventListener("input", (event) => {
+      currentDotColor = event.target.value;
+      // Update the dot material.
+      greenDotMat.color.set(currentDotColor);
+      // Update existing trail materials.
+      greenDots.forEach(dot => {
+        if (dot.trailLine) {
+          dot.trailLine.material.uniforms.color.value.set(currentDotColor);
+        }
+      });
+    });
+
+    // ----- Toggle Grid Visibility with the Checkbox -----
+    const gridToggle = document.getElementById("toggleGridCheckbox");
+    gridToggle.addEventListener("change", (event) => {
+      cubeFaces.visible = event.target.checked;
+    });
+  </script>
+</body>
+</html>
+<!-- original CodePen: https://codepen.io/CoinTechie/pen/azbzXza -->
