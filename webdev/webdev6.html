@@ -8,7 +8,7 @@
     body {
       margin: 0;
       overflow: hidden;
-      background-color: #222;
+      background-color: #ffffff;
     }
     canvas {
       display: block;
@@ -154,12 +154,12 @@
 
       return faces;
     }
-    const cubeFaces = createCubeFaces(1500, 0x555555);
+    const cubeFaces = createCubeFaces(1500, 0x999999999);
     scene.add(cubeFaces);
 
     // ----- Explosion Effect -----
     const explosions = [];
-    function spawnExplosion(pos, explosionColor = 0xffaa00) {
+    function spawnExplosion(pos, explosionColor = 0xffffff) {
       const geo = new THREE.SphereGeometry(10, 16, 16);
       const mat = new THREE.MeshBasicMaterial({
         color: explosionColor,
