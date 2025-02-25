@@ -23,7 +23,7 @@ body{
 }
 
 @keyframes box2move{
-    from {
+    0% {
         left: 0px;
         top: 0px;
     }
@@ -61,7 +61,7 @@ body{
         left: 400px;
         top: 400px;
     }
-    to {
+    100% {
         left: 0px;
         top: 0px;
     }
