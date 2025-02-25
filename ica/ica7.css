@@ -18,8 +18,8 @@ body{
     position: relative;
     background-color: orangered;
     animation-name: box2move;
-    animation-duration: 4s;
-    animation-iteration-count: infinite;;
+    animation-duration: 8s;
+    animation-iteration-count: infinite;
 }
 
 @keyframes box2move{
