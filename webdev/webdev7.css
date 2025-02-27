@@ -1,0 +1,73 @@
+@property --v {
+    syntax: "<number>";
+    inherits: true;
+    initial-value: 0; 
+  }
+  
+  input[type="range"] {
+    /* don't update the values, I got lazy doing all the math so the values are "magic" */
+    --s: 50px; 
+    --b: 14px; 
+    --m: 0.4;
+    --R: calc(var(--s)*sqrt(var(--m)*var(--m) + 1) + var(--b)/2);
+    height: calc(2*var(--R));
+    aspect-ratio: 2.9;
+    appearance: none;
+    --_g:#0000 calc(100% - var(--b) - 1px),#13ccfb calc(100% - var(--b)) 100%, #0000 calc(100% + 1px);
+    --_l:50%/var(--b) var(--b) no-repeat radial-gradient(50% 50%,#13ccfb calc(100% - 1px),#94949400 calc(100% + 1px));
+    --_s:/calc(4*var(--s)) calc(var(--s) + var(--b)) repeat-x;
+    background:
+      calc(-6px + var(--s)/2) var(--_l),
+      calc(100% + 6px - var(--s)/2) var(--_l),
+      linear-gradient(150deg,#000000 23%,#0000 24%),
+      linear-gradient(210deg,#000000 23%,#0000 24%),
+      radial-gradient(var(--R) at left 50% top calc(-1*var(--m)*var(--s)), var(--_g)) 
+       calc(50% - 2*var(--s)) calc(50% + var(--s)/2 + var(--b)/2) var(--_s),
+      radial-gradient(var(--R) at left 50% bottom calc(-1*var(--m)*var(--s)),var(--_g)) 
+       50% calc(50% - var(--s)/2 - var(--b)/2) var(--_s);
+    cursor: wait;
+    timeline-scope: --v;
+    animation: --v linear both;
+    animation-timeline: --v;
+    animation-range: entry 100% exit 0%;
+    overflow: hidden;
+  }
+  @keyframes --v {
+    0% {--v: attr(max type(<number>))}
+    to {--v: attr(min type(<number>))}
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    appearance: none;
+    width: var(--s);
+    aspect-ratio: 2;
+    border-radius: 10%;
+    box-shadow: 
+       inset 0 0 2px rgba(255, 33, 33, 0.5), 
+       0 0 2px 1px #0351ec;
+    background: 
+      radial-gradient(#ff20f0 calc(var(--b)/3),#5837dd00 var(--b)),
+      repeating-conic-gradient(#33c064,#96e8a0,#33c064 25%);
+    translate: 0 calc(sin(var(--v))*65%);
+    rotate: calc(var(--v)*.15turn);
+    view-timeline: --v inline;
+  }
+  input[type="range"]:focus-visible {
+    outline: 2px solid #9914dc;
+  }
+  
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: grid;
+    place-content: center;
+    background: #000000; /* there is no real transparency so don't change this color, again I got lazy */
+  }
+  
+  
+  @supports (-moz-appearance: none) {
+    input {display:none}
+    body:before {
+      content: "Nothing for you Firefox users. Use Chrome!";
+      font: bold 30px system-ui,sans-serif;
+    }
+  }
