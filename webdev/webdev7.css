@@ -68,6 +68,4 @@
     input {display:none}
     body:before {
       content: "Nothing for you Firefox users. Use Chrome!";
-      font: bold 30px system-ui,sans-serif;
-    }
-  }
+      font: bold 30px sy
