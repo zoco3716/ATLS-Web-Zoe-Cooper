@@ -1,0 +1,41 @@
+/* background: #040212
+/* neon green: #51de00
+/* bright pink: #a6024b
+/* pure cyan: #00ffff
+/* periwinkle (not gross light color): #8ac6ff
+/* green beige: #d1e0d2
+*/
+
+body {
+    background-color: #0c0026;
+    color: #8ac6ff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: "Lucida Sans Typewriter", monospace;
+}
+h1 {
+    color: #51de00;
+}
+h2 {
+    color: #318501;
+}
+h3 {
+    color: #51de00;
+}
+
+.box {
+    width: 80%;
+    background-color: #a6024b;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 40px;
+    border-style: dotted;
+    border-width: 3px;
+}
+
+@media only screen and (max-width: 600px) {
+    body {
+        
+    }
+}
