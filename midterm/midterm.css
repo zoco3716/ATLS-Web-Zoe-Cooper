@@ -1,0 +1,104 @@
+/* neon green: #51de00
+/* bright pink: #a6024b
+/* periwinkle (not gross light color): #8ac6ff
+*/
+body {
+    background-image: url("/ATLS-Web/midterm/midtermGalaxy2.jpg");
+    background-size: contain;
+    background-repeat: no repeat;
+    color: #8ac6ff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: "Lucida Sans Typewriter", monospace;
+}
+h1 {
+    color: #51de00;
+}
+h2 {
+    color: #8ac6ff;
+}
+h3 {
+    color: #51de00;
+}
+.box {
+    width: 80%;
+    background-color: #a6024b;
+    border-radius: 40px;
+    border-style: dotted;
+    border-width: 3px;
+    display: grid;
+    padding: 20px;
+    margin: 20px;
+}
+.box > div {
+    margin: 20px;
+    padding: 20px;
+}
+.constellation {
+    position: relative;
+    width: 400px;
+    height: 800px;
+    margin: 20px;
+}
+.star {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    transition: 0.5s;
+}
+.star:hover {
+    display: block;
+    background-color: #a6024b;
+}
+.star:nth-child(1) { 
+    top: 10%; 
+    left: 20%; 
+}
+.star:nth-child(2) { 
+    top: 20%; 
+    left: 85%; 
+}
+.star:nth-child(3) { 
+    top: 30%; 
+    left: 3%; 
+}
+.star:nth-child(4) { 
+    top: 40%; 
+    left: 74%; 
+}
+.star:nth-child(5) { 
+    top: 50%; 
+    left: 31%; 
+}
+.star:nth-child(6) {
+    top: 60%;
+    left: 88%;
+}
+.star:nth-child(7) {
+    top: 70%;
+    left: 34%;
+}
+.star:nth-child(8) {
+    top: 80%;
+    left: 86%;
+}
+.star:nth-child(9) {
+    top: 90%;
+    left: 12%;
+}
+.star:nth-child(10) {
+    top: 100%;
+    left: 67%;
+}
+.line {
+    height: 3px;
+    position: absolute;
+    background-color: white;
+    top: 10%;
+    left: 20%;
+    width: 65%;
+}
