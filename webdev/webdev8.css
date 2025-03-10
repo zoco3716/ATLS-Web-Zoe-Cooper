@@ -51,7 +51,9 @@
   }
 
   body {
-    background-color: var(--surface-1);
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Jeremy_Allen_White%2C_AT%26T_Center%2C_2013.jpg/640px-Jeremy_Allen_White%2C_AT%26T_Center%2C_2013.jpg");
+    background-size: 10vw;
+    background-color: white;
     color: var(--text-1);
     font: var(--body);
   }
@@ -177,7 +179,7 @@
       translate: calc(cos((var(--angle) + var(--angle-offset))) * var(--radius) * var(--inline-ratio))
         calc(sin((var(--angle) + var(--angle-offset))) * var(--radius) * var(--block-ratio) * -1);
 
-      animation: adjust-angle linear 40s infinite reverse var(--animation-state);
+      animation: adjust-angle linear 5s infinite reverse var(--animation-state);
     }
   }
 
@@ -226,7 +228,6 @@
   }
 
   .avatar-img {
-    background-color: var(--surface-2);
     block-size: 100%;
     display: block;
     inline-size: 100%;
