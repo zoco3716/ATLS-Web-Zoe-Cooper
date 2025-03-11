@@ -16,7 +16,8 @@ body {
 h1 {
     color: #51de00;
     font-family: "Lucida Sans Typewriter", monospace;
-    font-family:'Lucida Sans Regular', Geneva, Verdana, sans-serif
+    text-decoration:underline overline;
+    text-decoration-style: wavy;
 }
 h2 {
     color: #8ac6ff;
