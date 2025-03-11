@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="midterm.css">
-    <title>Document</title>
+    <title>ZΩRBLAXian VOID PULSE COLLECTIVE midterm</title>
 </head>
 <body>
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
 <h1> ZΩRBLAXian VOID PULSE COLLECTIVE </h1>
 <h2> Concert Descriptions Compilation </h2>
 <hr>
@@ -24,11 +25,15 @@
 </div>
 <div class = "box" id = "concert1">
 <h3>CONCERT 1: COSMIC SENSORY CONVERGENCE: STELLAR VOYAGE</h3>
+<hr>
 <b>Stardate 2025.108-109 | Harmonic Alignment: 22:00</b><br>
-<b>Conductor: Multi-Dimensional Maestro ZEROX-9</b><br>
-<b>Repertoire: "CELESTIAL BODIES IN MOTION," "GRAVITATIONAL HARMONICS," "GALACTIC
-SYNTHESIS," "INTERSTELLAR JOURNEY," "COSMIC ENLIGHTENMENT"</b><br>
+<b>Conductor:</b>Multi-Dimensional Maestro ZEROX-9<br>
+<hr>
+<b>Repertoire:</b> "CELESTIAL BODIES IN MOTION," "GRAVITATIONAL HARMONICS," "GALACTIC
+SYNTHESIS," "INTERSTELLAR JOURNEY," "COSMIC ENLIGHTENMENT"<br>
+<hr>
 The Crystal Nebula, Interdimensional Sound Pavilion <br>
+<hr>
 The enigmatic (bold start)ZEROX-9(bold end), whose conducting technique has been described as
 "transcendentally mesmerizing" across seven galaxies, guides the vibrant collective
 known as the ZΩRBLAXian VOID PULSE COLLECTIVE through an evening of cosmic wonder.
@@ -68,9 +73,9 @@ revolutionary "EVENT HORIZON REQUIEM"—a composition that bends spacetime throu
 sound alone, allowing audiences to perceive music from multiple timelines
 simultaneously. Quantum stabilization suits provided. Note: The concert may appear
 to last between 20 minutes and 75 years depending on your position in the
-amphitheater. Chrono-synchronization therapy available post-concert. <br>
+amphitheater. Chrono-synchronization therapy available post-concert.<br>
 <hr>
-</div>
+</div> 
 <div class = "box" id = "concert3">
 <h3>CONCERT 3: INTERSPECIES HARMONIZATION: GALACTIC CHORUS</h3>
 <b>Stardate 2025.173-174 | Biorhythmic Synchronization: 19:30 </b><br>
@@ -268,5 +273,26 @@ temporal displacement. Caution: Side effects may include localized reality
 breakdowns, spontaneous quantum rejuvenation, and temporary immortality. <br>
 <hr>
 </div>
+<script>
+    // Get the button
+    let mybutton = document.getElementById("myBtn");
+    
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {scrollFunction()};
+    
+    function scrollFunction() {
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        mybutton.style.display = "block";
+      } else {
+        mybutton.style.display = "none";
+      }
+    }
+    
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }
+    </script>
 </body>
 </html>
