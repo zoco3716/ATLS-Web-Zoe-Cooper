@@ -148,4 +148,89 @@ html {
     background-color: #51de00;
     color: black;
     padding: 15px;
-    border-radiu
+    border-radius: 15px;
+  }
+  
+  #top:hover {
+    background-color: black;
+    color: white;
+  }
+  hr {
+    color: white;
+    z-index: 100;
+  }
+  @media only screen and (max-width: 600px) {
+    .nav {
+        height: 350px;
+        width: 150px;
+        background-color: #51de00;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 40px;
+        border-style: double;
+        border-color: #a6024b;
+        border-width: 15px;
+        padding: 30px;
+        margin: 10px;
+        font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+    ul {
+        list-style-type: none;
+        text-decoration: none;
+        padding: 0px;
+        font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+    }
+    ul a {
+        list-style-type: none;
+        text-decoration: none;
+    }
+    a {
+        color: black;
+    }
+    
+    ul a:hover {
+        color: rgb(255, 255, 255);
+        transition: .3s;
+    }
+
+    .constellation {
+        display: none;
+    }
+  }
+
+  .image {
+    width: 100vw;
+    background-color:black;
+  }
+  .image2 {
+    background-color: black;
+    width: 70vw;
+  }
+
+  .stardate {
+    font-size: 20px;
+  }
+  .block {
+    color: white;
+    padding: 0px;
+    margin: 0px;
+  }
+
+  .firstSpan .secondSpan {
+    visibility: hidden;
+    width: 150px;
+    background-color: #51de00;
+    color: white;
+    text-align: center;
+    border-radius: 30px;
+    padding: 15px;
+    position: absolute;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+      
+  .firstSpan:hover .secondSpan {
+    visibility: visible;
+    transition: .3s;
+  }
