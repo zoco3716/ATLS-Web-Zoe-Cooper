@@ -55,4 +55,10 @@ button {
   }
   
   /*   0. BEFORE-OPEN STATE   */
-  @sta
+  @starting-style {
+    [popover]:popover-open {
+      translate: 0 -22rem;
+    }
+  }
+
+/* Credit to original CodePen: https://codepen.io/web-dot-dev/pen/ExJrbjw 
