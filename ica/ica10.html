@@ -8,4 +8,26 @@
         function random() {
             var red = Math.floor(Math.random() * 256);
             var green = Math.floor(Math.random() * 256);
-            var blue = Ma
+            var blue = Math.floor(Math.random() * 256);
+            var newColor = "rgb(" + red + "," + green + "," + blue + ")";
+            document.getElementById("type1").style.backgroundColor = newColor;
+        }
+    </script>
+</head>
+
+<body>
+    <style>
+        .type1 {
+            height: 50vw;
+            width: 50vw;
+        }
+        .button {
+            padding: 30px;
+            font-size: 100px;
+        }
+    </style>
+    <input class = "button" id = 'type1' type = 'button' value = 'Click' onclick= 'random()'> </input/>
+    <p id="demo">April showers bring may flowers, but what do may flowers bring?</p>
+    <button type="button" onclick='document.getElementById("demo").innerHTML = "Pilgrims!"'>click for answer</button>
+</body>
+</html>
