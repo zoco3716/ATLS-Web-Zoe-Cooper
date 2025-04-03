@@ -38,7 +38,7 @@ nav {
   padding: 10px;
   position: sticky;
   top: 0;
-  width: 100vw;
+  width: 100%;
   border-radius: 30px;
   padding-right: 10px;
   left: 0;
@@ -107,7 +107,6 @@ p2 {
   color: RGB(20,55,51);
 }
 
-/* Dropdown menu styling */
 .dropdown {
   position: relative;
   display: grid;
@@ -121,6 +120,7 @@ p2 {
   font-family: "petala-pro", sans-serif;
   font-weight: 300;
   font-style: normal;
+  
 }
 
 .dropdown:hover > .dropdown-content {
@@ -155,7 +155,6 @@ p2 {
   color: #973955;
 }
 
-/* Nested dropdown positioning */
 .dropdown-content .dropdown {
   position: relative;
 }
@@ -170,6 +169,10 @@ p2 {
   padding-left: 15vw;
   padding-right: 15vw;
   padding-bottom: 15px;
+}
+
+.projectContainer {
+  padding: 0;
 }
 
 .project-description {
@@ -264,16 +267,14 @@ video {
     display: flex;
     flex-direction: column; 
     text-align: center;
-    margin-left: 20vw;
-    margin-right: 20vw;
-    width: 60vw;
+    margin-left: 30vw;
+    margin-right: 30vw;
+    width: 40vw;
   }
 
   nav a {
     display: block;
     padding: 10px;
-    width: 50vw;
+    width: 30vw;
   }
-
 }
-
