@@ -56,4 +56,26 @@
         msg.textContent = msgText;
         panel.appendChild(msg);
 
-        c
+        const closeBtn = document.createElement("button");
+        closeBtn.textContent = "x";
+        panel.appendChild(closeBtn);
+
+        closeBtn.addEventListener("click", () =>
+            panel.parentNode.removeChild(panel),
+        );
+        if (msgType === "warning") {
+            msg.style.backgroundImage = "url(https://github.com/mdn/learning-area/blob/main/javascript/building-blocks/functions/icons/chat.png?raw=true)";
+            panel.style.backgroundColor = "red";
+        } 
+        else if (msgType === "chat") {
+            msg.style.backgroundImage = "url(icons/chat.png)";
+            panel.style.backgroundColor = "aqua";
+        } 
+        else {
+            msg.style.paddingLeft = "20px";
+        }
+
+    }
+    </script>
+  </body>
+</html>
