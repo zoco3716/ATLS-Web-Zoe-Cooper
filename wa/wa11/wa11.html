@@ -1,37 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
     <title>Image Gallery</title>
-    <link rel = "stylesheet" href = "wa11.css">
-</head>
-<body>
-    <h1>Image Gallery</h1>
+
+    <link rel="stylesheet" href="wa11.css">
+    
+  </head>
+
+  <body>
+    <h1>Phineas & Ferb Characters (only five)</h1>
 
     <div class="full-img">
-        <img class="displayed-img" src="image1wa11.jpg" />
-        <div class="overlay"></div>
-        <button class="dark">Darken</button>
+      <img class="displayed-img" src="imageswa11/candace.jpg" alt="Closeup of a human eye">
+      <div class="overlay"></div>
+      <button class="dark">Darken</button>
+    </div>
+    <div class="thumb-bar">
     </div>
 
-    <div class="thumb-bar"></div>
     <script>
-        const image1 = image1wa11.jpg;
-        const image2 = image2wa11.jpg;
-        const image3 = image3wa11.jpg;
-        const image4 = image4wa11.jpg;
-        const image5 = image5wa11.jpg;
-        const array = {image1, image2, image3, image4, image5};
-
+        const displayedImage = document.querySelector('.displayed-img');
         const thumbBar = document.querySelector('.thumb-bar');
 
-        for (let i = 0; i < array.length; i++) {
-            const newImage = document.createElement('img');
-            newImage.src = `images/${imageFiles[i]}`;
-            newImage.alt = `Thumbnail of ${imageFiles[i]}`;
-            thumbBar.appendChild(newImage);
+        const btn = document.querySelector('button');
+        const overlay = document.querySelector('.overlay');
+
+        const images = ['candace.jpg', `doof.jpg`, `isabella.jpg`, `perry.jpg`, `phineas.jpg`];
+
+        for (const image of images) {
+        const newImage = document.createElement('img');
+        newImage.setAttribute('src', `imageswa11/${image}`);
+        thumbBar.appendChild(newImage);
+        newImage.addEventListener('click', e => {
+            displayedImage.src = e.target.src;
+            displayedImage.alt = e.target.alt;
+        });
         }
+
+        btn.addEventListener('click', () => {
+        const btnClass = btn.getAttribute('class');
+        if (btnClass === 'dark') {
+            btn.setAttribute('class','light');
+            btn.textContent = 'Lighten';
+            overlay.style.backgroundColor = 'rgba(0,0,0,0.5)';
+        } else {
+            btn.setAttribute('class','dark');
+            btn.textContent = 'Darken';
+            overlay.style.backgroundColor = 'rgba(0,0,0,0)';
+        }
+        });
     </script>
 </body>
 </html>

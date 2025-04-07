@@ -1,92 +1,50 @@
-.overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 640px;
-    height: 480px;
-    background-color: rgba(0, 0, 0, 0);
-}
-
-div {
-    display: block;
-    unicode-bidi: isolate;
-}
-
-:root {
-    view-transition-name: root;
-}
-
-html {
-    display: block;
-}
-head {
-    display: none;
-}
-body {
-    width: 640px;
-    margin: 0 auto;
-}
-
-body {
-    display: block;
-    margin: 8px;
-}
-
 h1 {
     font-family: helvetica, arial, sans-serif;
     text-align: center;
+    color: white;
 }
-
-h1 {
-    display: block;
-    font-size: 2em;
-    margin-block-start: 0.67em;
-    margin-block-end: 0.67em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    font-weight: bold;
-    unicode-bidi: isolate;
+  
+body {
+    width: 640px;
+    margin: 0 auto;
+    align-items: center;
+    align-content: center;
+    background-image: url("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/adc30467-0b37-4bbf-a24b-e050748b0ed2/ded1wrc-42a0a3af-32c6-4124-8908-1a0b8c4b905d.png/v1/fill/w_1192,h_670,q_70,strp/phineas_and_ferb___doofenshmirtz__lab_by_thekrisboii_ded1wrc-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NzIwIiwicGF0aCI6IlwvZlwvYWRjMzA0NjctMGIzNy00YmJmLWEyNGItZTA1MDc0OGIwZWQyXC9kZWQxd3JjLTQyYTBhM2FmLTMyYzYtNDEyNC04OTA4LTFhMGI4YzRiOTA1ZC5wbmciLCJ3aWR0aCI6Ijw9MTI4MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.HvV1yLK5gRwAYACXK8DAXbz_LUVGAs8og3rDHfA0-F0")
 }
-
+  
 .full-img {
     position: relative;
     display: block;
     width: 640px;
     height: 480px;
 }
-
-div {
-    display: block;
-    unicode-bidi: isolate;
+  
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 640px;
+    height: 480px;
+    background-color: rgba(0,0,0,0);
 }
-
-img {
-    overflow-clip-margin: content-box;
-    overflow: clip;
-}
-
+  
 button {
     border: 0;
-    background: rgba(150, 150, 150, 0.6);
-    text-shadow: 1px 1px 1px white;
+    background: rgba(185, 184, 184, 0.6);
     border: 1px solid #999;
     position: absolute;
     cursor: pointer;
     top: 2px;
     left: 2px;
 }
-user agent stylesheet
-button {
-    display: inline-block;
-    text-align: center;
-    cursor: default;
-    box-sizing: border-box;
-    background-color: buttonface;
-    margin: 0em;
-    padding-block: 1px;
-    padding-inline: 6px;
-    border-width: 2px;
-    border-style: outset;
-    border-color: buttonborder;
-    border-image: initial;
+  
+.thumb-bar img {
+    display: block;
+    width: 15%;
+    float: left;
+    cursor: pointer;
+}
+
+.displayed-img {
+    width: 480px;
 }
