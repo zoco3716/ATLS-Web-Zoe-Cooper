@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+    <link rel = "stylesheet" href = "wa11.css">
+</head>
+<body>
+    <h1>Image Gallery</h1>
+
+    <div class="full-img">
+        <img class="displayed-img" src="image1wa11.jpg" />
+        <div class="overlay"></div>
+        <button class="dark">Darken</button>
+    </div>
+
+    <div class="thumb-bar"></div>
+    <script>
+        const image1 = image1wa11.jpg;
+        const image2 = image2wa11.jpg;
+        const image3 = image3wa11.jpg;
+        const image4 = image4wa11.jpg;
+        const image5 = image5wa11.jpg;
+        const array = {image1, image2, image3, image4, image5};
+
+        const thumbBar = document.querySelector('.thumb-bar');
+
+        for (let i = 0; i < array.length; i++) {
+            const newImage = document.createElement('img');
+            newImage.src = `images/${imageFiles[i]}`;
+            newImage.alt = `Thumbnail of ${imageFiles[i]}`;
+            thumbBar.appendChild(newImage);
+        }
+    </script>
+</body>
+</html>
