@@ -278,3 +278,37 @@ video {
     width: 30vw;
   }
 }
+
+.contact-form {
+  background-color: #fffefb;
+  padding: 30px; 
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 30px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  font-size: 1.1em;
+  color: #4f4f4f;
+}
+
+.contact-form button {
+  background-color: #973955;
+  color: #fff;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.contact-form button:hover {
+  background-color: #6a263a;
+}
