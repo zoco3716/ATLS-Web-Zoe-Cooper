@@ -1,37 +1,35 @@
-* {
-	box-sizing: border-box;
-	padding: 0;
-	margin: 0;
-}
-
 body {
-	color: hsl(32 35% 21%);
-	background: hsl(49 72% 89%);
-	min-block-size: 100svb;
-	display: grid;
-	place-items: center;
-	font-family: system-ui;
-}
-
-*::selection {
-	background: hsl(42 48% 80%);
-}
-
-div > * + * {
-	margin-block-start: 0.5rem;
-}
-
-label {
-	display: block;
-	font-weight: 700;
-}
-
-label > input {
-	margin-block-start: 0.5rem;
-}
-
-input {
-	display: block;
-	accent-color: hsl(30 26% 32%);
-	inline-size: 100%;
-}
+    align-items: center;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    margin: 0;
+    overflow-x: hidden;
+    width: 100vw;
+    background-image: url("https://cdn.pixabay.com/photo/2016/03/28/20/39/sky-1286888_1280.jpg");
+    background-size: 200vh;
+  }
+  
+  .boops {
+    display: block;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+  }
+  
+  button {
+    background: #000000;
+    border: none;
+    border-radius: 1.5rem;
+    color: white;
+    display: block;
+    font-size: 2rem;
+    font-weight: 900;
+    padding: 0.25rem 1rem;
+    position: relative;
+    z-index: 10;
+  }
+  
