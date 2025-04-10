@@ -2,7 +2,10 @@ var newBtn = document.querySelector('#js-new-quote').addEventListener('click', g
 
 var endpoint = "https://trivia.cyberwisp.com/getrandomchristmasquestion";
 
-var answerBtn = document.querySelector('#js-tweet').addEventListener('click',displayAnswer);
+var answerBtn = document.querySelector('#js-tweet').addEventListener('click', function() {
+    displayAnswer(current.answer);
+});
+
 
 let current = {
     question: "", answer: ""
