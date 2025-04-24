@@ -5,15 +5,19 @@ html, body {
     height: 100%;
   }
   
-  body {
+body {
     background-image: url("https://static.vecteezy.com/system/resources/previews/011/064/764/non_2x/cartoon-night-starry-sky-design-simple-dark-blue-space-background-with-stars-clipart-cartoon-starry-pattern-cosmic-stars-in-darkness-space-night-sky-constellations-galaxy-vector.jpg");
     color: white;
     font-family: 'Courier New', Courier, monospace;
     font-size: 15px;
   }
   
+p {
+    position:absolute;
+    left:10px;
+  }
   
-  #game {
+#game {
     position: relative;
     width: 100vw;
     height: 100vh;
@@ -23,7 +27,7 @@ html, body {
   }
 
   
-  #basket {
+#basket {
     position: absolute;
     bottom: 10px;
     width: 80px;
@@ -33,7 +37,7 @@ html, body {
     transform: translateX(-50%);
   }
   
-  .item {
+.item {
     position: absolute;
     width: 30px;
     height: 30px;
@@ -43,7 +47,7 @@ html, body {
     object-fit: cover;
   }
   
-  #volume {
+#volume {
     position: absolute;
     top: 10px;
     left: 10px;
@@ -51,4 +55,3 @@ html, body {
     font-size: 50px;
     padding: 20px;
   }
-  

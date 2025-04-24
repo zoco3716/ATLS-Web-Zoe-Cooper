@@ -39,10 +39,6 @@ function dropItem() {
       clearInterval(fall);
     }
 
-    if (item.offsetTop > window.innerHeight) {
-      item.remove();
-      clearInterval(fall);
-    }
   }, 20);
 }
 
