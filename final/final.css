@@ -1,0 +1,54 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* 💡 prevents scrollbars */
+    height: 100%;
+  }
+  
+  body {
+    background-image: url("https://static.vecteezy.com/system/resources/previews/011/064/764/non_2x/cartoon-night-starry-sky-design-simple-dark-blue-space-background-with-stars-clipart-cartoon-starry-pattern-cosmic-stars-in-darkness-space-night-sky-constellations-galaxy-vector.jpg");
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 15px;
+  }
+  
+  
+  #game {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+    padding: 0px;
+  }
+
+  
+  #basket {
+    position: absolute;
+    bottom: 10px;
+    width: 80px;
+    height: 40px;
+    left: 50px;
+    background: #5c8ec0;
+    transform: translateX(-50%);
+  }
+  
+  .item {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: white;
+    border-radius: 50%;
+    background-image: url("https://www.clker.com/cliparts/T/y/k/o/D/E/white-star.svg");
+    object-fit: cover;
+  }
+  
+  #volume {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-family:'Courier New', Courier, monospace;
+    font-size: 50px;
+    padding: 20px;
+  }
+  
