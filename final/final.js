@@ -31,6 +31,8 @@ function dropItem() {
     starCount++;
 
     if (starCount % 10 === 0) {
+        item.style.width = '50px';
+        item.style.height = '50px';
         item.style.backgroundImage = 'url("https://i.ebayimg.com/images/g/VXsAAOSwBnNlop5N/s-l1200.jpg")';
         item.style.backgroundSize = 'cover';
     }
