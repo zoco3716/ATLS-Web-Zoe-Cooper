@@ -20,7 +20,6 @@ document.addEventListener('keydown', function(e) {
 });
 
 function dropItem() {
-    if (phoneNumber.length >= 10) return;
 
     var item = document.createElement('div');
     item.className = 'item';
