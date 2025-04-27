@@ -13,7 +13,7 @@ document.addEventListener('keydown', function(e) {
         basket.style.left = (left + 20) + 'px';
     } else if (e.code === 'Space') {
         phoneNumber += currentDigit;
-        phoneDisplay.textContent = 'PHONE: ' + phoneNumber;
+        phoneDisplay.textContent = 'PHONE NUMBER: ' + phoneNumber;
         currentDigit = 0;
         currentDigitDisplay.textContent = 'CURRENT DIGIT: ' + currentDigit;
     }
