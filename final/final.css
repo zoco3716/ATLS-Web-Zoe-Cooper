@@ -1,7 +1,7 @@
 html, body {
     margin: 0;
     padding: 0;
-    overflow: hidden; /* 💡 prevents scrollbars */
+    overflow: hidden;
     height: 100%;
 }
   
@@ -15,7 +15,7 @@ body {
 p {
     position: absolute;
     left: 30px;
-
+    top: 50px;
 }
   
 #game {
@@ -23,8 +23,6 @@ p {
     width: 100vw;
     height: 100vh;
     overflow: hidden;
-    margin: 0;
-    padding: 0px;
 }
 
   
@@ -49,9 +47,19 @@ p {
     object-fit: cover;
 }
   
-#volume {
+#phoneDisplay {
     position: absolute;
-    top: 10px;
+    top: 60px;
+    left: 10px;
+    font-family:'Courier New', Courier, monospace;
+    font-size: 30px;
+    font-weight: bold;
+    padding: 20px;
+}
+
+#currentDigit {
+    position: absolute;
+    top: 5px;
     left: 10px;
     font-family:'Courier New', Courier, monospace;
     font-size: 50px;
