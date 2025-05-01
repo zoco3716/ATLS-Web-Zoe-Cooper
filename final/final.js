@@ -68,7 +68,6 @@ function dropItem() {
 
 setInterval(dropItem, 1500);
 
-
 // end (pop-up) when ten digits
 // reset button
 // ball to submit - bounce?
