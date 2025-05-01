@@ -25,7 +25,7 @@ function dropItem() {
 
     starCount++;
 
-    if (starCount % 5 === 0) {
+    if (starCount % 6 === 0) {
         isSubmit = true;
         item.textContent = 'SUBMIT';
         item.classList.add('submitStar');
