@@ -6,16 +6,22 @@ html, body {
 }
   
 body {
-    background-image: url("https://static.vecteezy.com/system/resources/previews/011/064/764/non_2x/cartoon-night-starry-sky-design-simple-dark-blue-space-background-with-stars-clipart-cartoon-starry-pattern-cosmic-stars-in-darkness-space-night-sky-constellations-galaxy-vector.jpg");
+    background-image: url("https://i.pinimg.com/originals/5c/da/64/5cda64089d46e4f156254f4e7abdebea.gif");
+    background-repeat: no-repeat;
+    background-size: 200vh;
     color: white;
-    font-family: 'Courier New', Courier, monospace;
     font-size: 20px;
+    font-family: "pf-videotext", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    z-index: 4;
 }
   
 p {
     position: absolute;
     left: 30px;
     top: 50px;
+    z-index: 4;
 }
   
 #game {
@@ -32,9 +38,8 @@ p {
     width: 160px;
     height: 80px;
     left: 100px;
-    background: #5c8ec0;
+    background: #ff00f7;
     transform: translateX(-50%);
-    border-radius: 15px;
 }
   
 .item {
@@ -42,7 +47,6 @@ p {
     width: 30px;
     height: 30px;
     background: white;
-    border-radius: 50%;
     background-image: url("https://www.clker.com/cliparts/T/y/k/o/D/E/white-star.svg");
     object-fit: cover;
 }
@@ -51,18 +55,38 @@ p {
     position: absolute;
     top: 60px;
     left: 10px;
-    font-family:'Courier New', Courier, monospace;
     font-size: 30px;
-    font-weight: bold;
+    font-family: "pf-videotext", sans-serif;
+    font-weight: 400;
+    font-style: normal;
     padding: 20px;
+    z-index: 4;
 }
 
 #currentDigit {
     position: absolute;
     top: 5px;
     left: 10px;
-    font-family:'Courier New', Courier, monospace;
+    font-family: "pf-videotext", sans-serif;
+    font-weight: 400;
+    font-style: normal;
     font-size: 50px;
-    font-weight: bold;
     padding: 20px;
+    z-index: 4;
+}
+
+#topOverlay {
+    position: fixed;
+    width: 100%;
+    height: 250px;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+}
+
+#wholeOverlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-image: url("https://www.onlygfx.com/wp-content/uploads/2019/02/7-noise-texture-overlays-1.png");
+    z-index: 5;
 }
