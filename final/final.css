@@ -6,7 +6,7 @@ html, body {
 }
   
 body {
-    background-image: url("https://i.pinimg.com/originals/5c/da/64/5cda64089d46e4f156254f4e7abdebea.gif");
+    background-image: url("https://i.pinimg.com/originals/53/86/46/538646b3c5b2f40a80f929d658712b4b.gif");
     background-repeat: no-repeat;
     background-size: 200vh;
     color: white;
@@ -30,7 +30,6 @@ p {
     height: 100vh;
     overflow: hidden;
 }
-
   
 #basket {
     position: absolute;
@@ -47,7 +46,6 @@ p {
     width: 30px;
     height: 30px;
     background: white;
-    background-image: url("https://www.clker.com/cliparts/T/y/k/o/D/E/white-star.svg");
     object-fit: cover;
 }
   
@@ -81,14 +79,6 @@ p {
     height: 250px;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 2;
-}
-
-#wholeOverlay {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background-image: url("https://www.onlygfx.com/wp-content/uploads/2019/02/7-noise-texture-overlays-1.png");
-    z-index: 5;
 }
 
 .submitStar {
